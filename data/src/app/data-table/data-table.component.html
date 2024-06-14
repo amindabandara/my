@@ -1,0 +1,27 @@
+<div>
+  <h1>Data table</h1>
+    <input [(ngModel)]="searchText" (input)="search($event)" placeholder="Search comments">
+
+    <table>
+      <thead>
+        <tr>
+          <th (click)="sortBy('id')">ID</th>
+          <th (click)="sortBy('email')">Email</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comment of filteredComments">
+          <td>{{comment.id}}</td>
+          <td>{{comment.email}}</td>
+          <td>{{comment.body}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button *ngFor="let page of [].constructor(totalPages); let i = index" (click)="changePage(i + 1)">
+        {{i + 1}}
+      </button>
+    </div>
+  </div>
+  
